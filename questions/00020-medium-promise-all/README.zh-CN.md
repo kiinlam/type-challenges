@@ -21,5 +21,5 @@ const p = PromiseAll([promise1, promise2, promise3] as const)
 
 ```ts
 // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#variadic-tuple-types
-declare function PromiseAll<T extends any[]>(values: readonly [...T]): Promise<{ [K in keyof T]: T[K] extends Promise<infer R> ? R : T[K] }>
+declare function PromiseAll<T extends any[]>(values: readonly [...T]): Promise<{ [K in keyof T]: Awaited<T[K]> }>
 ```
